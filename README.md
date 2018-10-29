@@ -27,6 +27,7 @@ config.vm.define "db" do |app|
 end
 end
 ````
+*ADVERTENCIA:* Hay que tener cuidado ya que si en la red pone ``config.vm.network``en vez de app lo engloba a todo y no a Apache HTTP Server
 ## Configuracion mediante provision
 Una vez que tenemos las maquinas preparadas vamos a crear dos archivos para configurar cada maquina mediante un script.
 Vamos a crear uno llamado ``provision-for-apache.sh`` que contiene:
@@ -62,7 +63,7 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password password $DB
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DB_ROOT_PASSWD"
 
 apt-get install -y mysql-server
-#sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+#sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
 #/etc/init.d/mysql restart
 
 apt-get install -y git
@@ -79,3 +80,4 @@ Hacemos un ``vagrant provision`` para actualizar.
 
 Para acceder ``vagrant ssh web`` o ``vagrant ssh db``
 
+Para ver las maquinas que tenemos iniciadas ``vagrant status`` ó ``vagrant global-status``
