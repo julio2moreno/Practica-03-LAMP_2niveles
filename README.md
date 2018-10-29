@@ -74,6 +74,8 @@ mysql -u root -p$DB_ROOT_PASSWD < /tmp/iaw-practica-lamp/db/database.sql
 ````
 ## Comandos utiles 
 Para iniciar las maquinas ``vagrant up web`` y ``vagrant up db``.
+
 Hacemos un ``vagrant provision`` para actualizar.
+
 Para acceder ``vagrant ssh web`` o ``vagrant ssh db``
 
